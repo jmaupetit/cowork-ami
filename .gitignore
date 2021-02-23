@@ -1,0 +1,17 @@
+# local environment file
+.env
+
+# virtualenvs
+venv
+
+# Packaging
+build
+dist
+*.egg-info
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# database
+db.sqlite3
