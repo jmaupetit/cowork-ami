@@ -79,5 +79,9 @@ superuser:
 	$(MANAGE) createsuperuser
 .PHONY: superuser
 
+test: run-db
+	$(ACTIVATE) && pytest
+.PHONY: test
+
 venv:
 	python -m venv venv
