@@ -20,6 +20,40 @@ install:
 	$(PIP) install -e .[dev]
 .PHONY: install
 
+lint:
+lint: \
+  lint-isort \
+  lint-black \
+  lint-flake8 \
+  lint-pylint \
+  lint-bandit
+.PHONY: lint
+
+lint-black:
+	@echo 'lint:black started…'
+	$(ACTIVATE) && black src/cowork
+.PHONY: lint-black
+
+lint-flake8:
+	@echo 'lint:flake8 started…'
+	$(ACTIVATE) && flake8 src/cowork
+.PHONY: lint-flake8
+
+lint-isort:
+	@echo 'lint:isort started…'
+	$(ACTIVATE) && isort --atomic src/cowork
+.PHONY: lint-isort
+
+lint-pylint:
+	@echo 'lint:pylint started…'
+	$(ACTIVATE) && pylint src/cowork
+.PHONY: lint-pylint
+
+lint-bandit:
+	@echo 'lint:bandit started…'
+	$(ACTIVATE) && bandit -qr src/cowork
+.PHONY: lint-bandit
+
 migrate: run-db
 	$(MANAGE) migrate
 .PHONY: migrate
