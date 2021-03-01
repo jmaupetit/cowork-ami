@@ -1,0 +1,41 @@
+name: Quality assessment
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -e .[dev]
+    - name: Lint with isort
+      run: |
+        isort --check-only src/cowork
+    - name: Lint with black
+      run: |
+        black src/cowork --check
+    - name: Lint with flake8
+      run: |
+        flake8 src/cowork
+    - name: Lint with pylint
+      run: |
+        pylint src/cowork
+    - name: Lint with bandit
+      run: |
+        bandit -qr src/cowork
+    - name: Test with pytest
+      run: |
+        pytest
