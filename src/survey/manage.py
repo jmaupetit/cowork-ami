@@ -6,7 +6,7 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "cowork.settings")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "survey.settings")
     try:
         # pylint: disable=import-outside-toplevel
         from django.core.management import execute_from_command_line
