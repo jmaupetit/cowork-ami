@@ -2,8 +2,17 @@
 
 import uuid
 
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+
+
+def validate_true(value):
+    """Force a checkbox to be checked"""
+
+    if not value:
+        raise ValidationError("Vous devez accepter cette condition")
+    return value
 
 
 class Application(models.Model):
@@ -94,6 +103,7 @@ class Application(models.Model):
     has_accepted_data_policy = models.BooleanField(
         _("J'accepte la potitique de gestion des données du présent questionnaire"),
         default=False,
+        validators=[validate_true],
     )
 
     has_validated_email = models.BooleanField(

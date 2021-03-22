@@ -1,0 +1,70 @@
+<html>
+  <header>
+    <!-- Google Fonts -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+    />
+    <!-- CSS Reset -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+    />
+    <!-- Milligram CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+  </header>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Un coworking pour Mondarverne</h1>
+      </header>
+
+      <div class="main">
+        <form action="" method="POST">
+          {% csrf_token %}
+          {{ form.non_field_errors }}
+
+          <fieldset>
+            <label for="id_last_name">Nom</label>
+            {{ form.last_name }}
+            {{ form.last_name.errors }}
+
+            <label for="id_first_name">Prénom</label>
+            {{ form.first_name }}
+            {{ form.first_name.errors }}
+
+            <label for="id_email">Email</label>
+            {{ form.email }}
+            {{ form.email.errors }}
+
+            <label for="id_city">Ville de résidence principale</label>
+            {{ form.city }}
+            {{ form.city.errors }}
+          </fieldset>
+          <fieldset>
+            <label for="id_desired_role">Implication dans le projet</label>
+            {{ form.desired_role }}
+            {{ form.desired_role.errors }}
+
+            <label for="id_max_monthly_bill">Budget mensuel maximal</label>
+            Quel budget vous (ou votre entreprise) pouvez allouer à l'utilisation d'un espace de co-working ?
+            {{ form.max_monthly_bill }}
+            {{ form.max_monthly_bill.errors }}
+          </fieldset>
+          <fieldset>
+            {{ form.has_accepted_data_policy }}
+            <label class="label-inline" for="id_has_accepted_data_policy">J'accepte la politique de gestion des données du présent questionnaire (voir conditions ci-dessous).</label>
+            {{ form.has_accepted_data_policy.errors }}
+          </fieldset>
+          <div class="row">
+            <input class="button button-clear" type="reset" value="Annuler" />
+            <input type="submit" value="Envoyer" />
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

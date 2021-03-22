@@ -2,6 +2,8 @@ ACTIVATE = source venv/bin/activate
 MANAGE   = $(ACTIVATE) && cd src/survey && python manage.py
 PIP      = $(ACTIVATE) && pip
 
+default: run
+
 .env:
 	cp src/survey/.env.dist src/survey/.env
 
