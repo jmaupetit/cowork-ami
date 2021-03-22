@@ -1,8 +1,6 @@
-# Co-working Mond'Arverne communauté
+# Survey
 
-Ce projet vise à gérer un appel à manifestation d'intérêt pour la création d'un
-espace de co-working localisé dans la communauté de commune Mond'Arverne (Puy
-de Dôme, France).
+A basic survey engine for Django developers.
 
 ## Prérequis
 
@@ -13,16 +11,15 @@ de Dôme, France).
 
 ## Démarrer le projet
 
-Pour installer le projet et ses dépendances de développement, nous allons créer
-un environnement virtuel python, une configuration de l'environnement de
-l'application, démarrer la base de données et appliquer les migrations
-courantes :
+To install the project along with its dependencies, we will create a python
+virtual environment, a dot env configuration file, start the database and apply
+current migrations:
 
 ```bash
 $ make bootstrap
 ```
 
-Pour créer un utilisateur d'administration, lancer :
+Now create a super user using the following command:
 
 ```bash
 $ make superuser
@@ -32,5 +29,5 @@ And voilà.
 
 ## Licence
 
-Ce projet est sous licence MIT, voir le fichier [`LICENSE`](./LICENSE) du
-projet.
+This project is released under the MIT License, See the bundled
+[`LICENSE`](./LICENSE) file for details..

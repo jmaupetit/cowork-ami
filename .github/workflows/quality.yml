@@ -23,19 +23,19 @@ jobs:
         pip install -e .[dev]
     - name: Lint with isort
       run: |
-        isort --check-only src/cowork
+        isort --check-only src/survey
     - name: Lint with black
       run: |
-        black src/cowork --check
+        black src/survey --check
     - name: Lint with flake8
       run: |
-        flake8 src/cowork
+        flake8 src/survey
     - name: Lint with pylint
       run: |
-        pylint src/cowork
+        pylint src/survey
     - name: Lint with bandit
       run: |
-        bandit -qr src/cowork
+        bandit -qr src/survey
     - name: Test with pytest
       run: |
         pytest

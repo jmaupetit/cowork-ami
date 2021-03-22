@@ -1,9 +1,11 @@
 ACTIVATE = source venv/bin/activate
-MANAGE   = $(ACTIVATE) && cd src/cowork && python manage.py
+MANAGE   = $(ACTIVATE) && cd src/survey && python manage.py
 PIP      = $(ACTIVATE) && pip
 
+default: run
+
 .env:
-	cp src/cowork/.env.dist src/cowork/.env
+	cp src/survey/.env.dist src/survey/.env
 
 bootstrap: \
 	venv \
@@ -17,6 +19,7 @@ down:
 .PHONY: down
 
 install:
+	$(PIP) install --upgrade pip
 	$(PIP) install -e .[dev]
 .PHONY: install
 
@@ -31,27 +34,27 @@ lint: \
 
 lint-black:
 	@echo 'lint:black started…'
-	$(ACTIVATE) && black src/cowork
+	$(ACTIVATE) && black src/survey
 .PHONY: lint-black
 
 lint-flake8:
 	@echo 'lint:flake8 started…'
-	$(ACTIVATE) && flake8 src/cowork
+	$(ACTIVATE) && flake8 src/survey
 .PHONY: lint-flake8
 
 lint-isort:
 	@echo 'lint:isort started…'
-	$(ACTIVATE) && isort --atomic src/cowork
+	$(ACTIVATE) && isort --atomic src/survey
 .PHONY: lint-isort
 
 lint-pylint:
 	@echo 'lint:pylint started…'
-	$(ACTIVATE) && pylint src/cowork
+	$(ACTIVATE) && pylint src/survey
 .PHONY: lint-pylint
 
 lint-bandit:
 	@echo 'lint:bandit started…'
-	$(ACTIVATE) && bandit -qr src/cowork
+	$(ACTIVATE) && bandit -qr src/survey
 .PHONY: lint-bandit
 
 migrate: run-db
